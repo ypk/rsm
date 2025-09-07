@@ -1,0 +1,31 @@
+{
+    "site": {
+        "name": "Right School of Motoring",
+        "tagline": "Professional Driving Lessons",
+        "description": "Learn to drive with confidence. Professional driving instructor offering manual and automatic lessons in [Your Area]. High pass rates, patient instruction, competitive prices.",
+        "url": "https://rightschoolofmotoring.com",
+        "image": "/og-image.jpg"
+    },
+    "business": {
+        "instructor": "Your Name",
+        "phone": "+44 7XXX XXXXXX",
+        "email": "info@rightschoolofmotoring.com",
+        "serviceArea": "Your Local Area",
+        "established": "2025"
+    },
+    "seo": {
+        "keywords": [
+            "driving lessons",
+            "driving instructor",
+            "learn to drive",
+            "automatic lessons",
+            "manual lessons"
+        ],
+        "author": "Right School of Motoring"
+    },
+    "social": {
+        "facebook": "",
+        "instagram": "",
+        "twitter": ""
+    }
+}
