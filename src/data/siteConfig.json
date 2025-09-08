@@ -10,6 +10,7 @@
         "instructor": "Your Name",
         "phone": "+44 7XXX XXXXXX",
         "email": "info@rightschoolofmotoring.com",
+        "address": "123 Driving Lane\nManchester, M1 2AB\nUnited Kingdom",
         "serviceArea": "Your Local Area",
         "established": "2025"
     },
@@ -23,11 +24,20 @@
         ],
         "author": "Right School of Motoring"
     },
-    "social": {
-        "facebook": "",
-        "instagram": "",
-        "twitter": ""
-    },
+    "social": [
+        {
+            "network": "facebook",
+            "url": "https://facebook.com/rightschoolofmotoring"
+        },
+        {
+            "network": "instagram",
+            "url": "https://instagram.com/rightschoolofmotoring"
+        },
+        {
+            "network": "twitter",
+            "url": "https://twitter.com/rightschoolofmotoring"
+        }
+    ],
     "navigation": {
         "items": [
             { "href": "/about", "label": "About Me" },

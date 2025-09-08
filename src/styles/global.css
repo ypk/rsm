@@ -31,8 +31,4 @@
   .section-padding {
     @apply py-16 px-4 sm:px-6 lg:px-8;
   }
-  
-  .font-heading {
-    font-family: 'Orbit', ui-sans-serif, system-ui, sans-serif;
-  }
 }
