@@ -2,11 +2,11 @@
 import siteConfig from '../../data/siteConfig.json'
 ---
 
-<section class="bg-slate-900 py-20 md:py-36">
+<section class="bg-slate-900 py-20 md:py-36" aria-labelledby="why-choose-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
     
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-stone-50 mb-4 font-heading">
+      <h2 id="why-choose-heading" class="text-3xl md:text-4xl font-bold text-stone-50 mb-4 font-heading">
         {siteConfig.sections.whyChooseMe.title}
       </h2>
       <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto">
@@ -14,9 +14,9 @@ import siteConfig from '../../data/siteConfig.json'
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {siteConfig.sections.whyChooseMe.usps.map(usp => {
-        const getIcon = (iconType) => {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" role="list" aria-label="Key benefits and unique selling points">
+      {siteConfig.sections.whyChooseMe.usps.map((usp, index) => {
+        const getIcon = (iconType: string) => {
           switch(iconType) {
             case 'checkmark':
               return <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>;
@@ -37,18 +37,28 @@ import siteConfig from '../../data/siteConfig.json'
           }
         };
         
+        const getIconLabel = (iconType: string): string => {
+          switch(iconType) {
+            case 'checkmark': return 'Success checkmark icon';
+            case 'clock': return 'Clock scheduling icon';
+            case 'user': return 'Person instruction icon';
+            case 'pound': return 'Pound sterling pricing icon';
+            default: return 'Feature icon';
+          }
+        };
+        
         return (
-          <div class="text-center bg-white/10 backdrop-blur-sm border border-white/20 px-8 py-10 md:p-6">
-            <div class="w-16 h-16 bg-amber-700 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class={usp.icon === 'pound' ? 'w-10 h-10 text-white' : 'w-8 h-8 text-white'} fill="none" stroke="currentColor" stroke-width={usp.icon === 'pound' ? '2' : '1'} viewBox={usp.icon === 'pound' ? '0 0 64 64' : '0 0 24 24'}>
+          <article class="text-center bg-white/10 backdrop-blur-sm border border-white/20 px-8 py-10 md:p-6" role="listitem" aria-labelledby={`usp-${index + 1}-title`}>
+            <div class="w-16 h-16 bg-amber-700 rounded-full flex items-center justify-center mx-auto mb-4" role="img" aria-label={getIconLabel(usp.icon)}>
+              <svg class={usp.icon === 'pound' ? 'w-10 h-10 text-white' : 'w-8 h-8 text-white'} fill="none" stroke="currentColor" stroke-width={usp.icon === 'pound' ? '2' : '1'} viewBox={usp.icon === 'pound' ? '0 0 64 64' : '0 0 24 24'} aria-hidden="true">
                 {getIcon(usp.icon)}
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-stone-50 mb-4 font-heading">{usp.title}</h3>
+            <h3 id={`usp-${index + 1}-title`} class="text-xl font-semibold text-stone-50 mb-4 font-heading">{usp.title}</h3>
             <p class="text-stone-300">
               {usp.description}
             </p>
-          </div>
+          </article>
         );
       })}
     </div>
