@@ -1,0 +1,92 @@
+---
+import siteConfig from '../../data/siteConfig.json'
+---
+
+<header class="bg-slate-900 shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-5 md:px-12 md:py-14">
+    <div class="flex justify-between items-center h-14 md:h-16">
+      
+      <div class="flex-shrink-0 w-2/3">
+        <a href="/" class="font-heading text-2xl leading-7 font-medium md:font-normal text-stone-50 hover:text-stone-300 transition-colors">
+          <span class="md:hidden">RSM</span>
+          <span class="hidden md:inline">{siteConfig.site.name}</span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
+        {siteConfig.navigation.items.map(item => (
+          <a href={item.href} class="text-stone-300 hover:text-stone-50 px-3 py-2 text-sm font-medium transition-colors">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="hidden md:block">
+        <a href={siteConfig.navigation.cta.href} class="btn-secondary">
+          {siteConfig.navigation.cta.label}
+        </a>
+      </div>
+
+      <div class="flex md:hidden">
+        <button class="menu-btn mobile-menu-button w-12 h-8 border-0 bg-transparent cursor-pointer p-0 text-stone-300 hover:text-stone-50 focus:outline-none focus:text-stone-50 transition-colors" id="menuBtn" aria-label="menu">
+          <svg class="w-full h-full" viewBox="0 0 48 32" aria-hidden="true">
+            <line class="line top transition-transform duration-200 ease-in-out origin-center motion-reduce:transition-none" x1="4" y1="8" x2="44" y2="8" stroke="currentColor" stroke-width="1" stroke-linecap="round" style="transform-box: fill-box;" />
+            <line class="line bottom transition-transform duration-200 ease-in-out origin-center motion-reduce:transition-none" x1="4" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="1" stroke-linecap="round" style="transform-box: fill-box;" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu hidden md:hidden fixed top-0 left-0 right-0 bottom-0 z-40 bg-slate-900" style="top: 96px;">
+      <div class="px-5 py-8">
+        <div class="mb-6">
+          {siteConfig.navigation.items.map(item => (
+            <a href={item.href} class="block px-0 py-3 text-2xl leading-9 font-medium tracking-tight text-stone-50 hover:text-stone-300 transition-colors">
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <div class="px-0 py-3">
+          <a href={siteConfig.navigation.cta.href} class="btn-secondary w-full text-center block">
+            {siteConfig.navigation.cta.label}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .menu-btn:hover:not(.active) .line {
+    transform: scaleX(0.8);
+  }
+
+  .menu-btn.active .top {
+    transform: translateY(8px) rotate(-45deg);
+  }
+  .menu-btn.active .bottom {
+    transform: translateY(-8px) rotate(45deg);
+  }
+
+  header.menu-active {
+    background-color: white !important;
+  }
+  
+  header.menu-active .text-stone-50:not(.mobile-menu *),
+  header.menu-active .text-stone-300:not(.mobile-menu *) {
+    color: black !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('menuBtn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    btn?.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      mobileMenu?.classList.toggle('hidden');
+      document.querySelector('header')?.classList.toggle('menu-active');
+    });
+  });
+</script>

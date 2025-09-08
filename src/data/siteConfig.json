@@ -27,5 +27,16 @@
         "facebook": "",
         "instagram": "",
         "twitter": ""
+    },
+    "navigation": {
+        "items": [
+            { "href": "/about", "label": "About Me" },
+            { "href": "/services", "label": "My Services" },
+            { "href": "/contact", "label": "Contact" }
+        ],
+        "cta": {
+            "href": "/contact",
+            "label": "Book a Lesson"
+        }
     }
 }
