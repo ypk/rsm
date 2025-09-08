@@ -9,12 +9,12 @@ import siteConfig from '../../data/siteConfig.json'
       <section class="flex-shrink-0 w-2/3" aria-label="Site logo">
         <a href="/" class="header-logo font-heading text-2xl leading-7 font-medium md:font-normal text-stone-50 hover:text-stone-300 transition-colors">
           <span class="md:hidden">RSM</span>
-          <span class="hidden md:inline">{siteConfig.site.name}</span>
+          <span class="hidden md:inline">{siteConfig.common.site.name}</span>
         </a>
       </section>
 
       <nav class="hidden md:flex space-x-8" aria-label="Main navigation">
-        {siteConfig.navigation.items.map(item => (
+        {siteConfig.common.navigation.items.map(item => (
           <a href={item.href} class="header-nav-link text-stone-300 hover:text-stone-50 px-3 py-2 text-sm font-medium transition-colors">
             {item.label}
           </a>
@@ -22,8 +22,8 @@ import siteConfig from '../../data/siteConfig.json'
       </nav>
 
       <section class="hidden md:block" aria-label="Call to action">
-        <a href={siteConfig.navigation.cta.href} class="btn-secondary">
-          {siteConfig.navigation.cta.label}
+        <a href={siteConfig.common.navigation.cta.href} class="btn-secondary">
+          {siteConfig.common.navigation.cta.label}
         </a>
       </section>
 
@@ -41,15 +41,15 @@ import siteConfig from '../../data/siteConfig.json'
     <nav class="mobile-menu hidden md:hidden fixed top-0 left-0 right-0 bottom-0 z-40 bg-slate-900" id="mobile-menu" aria-label="Mobile navigation" style="top: 96px;">
       <section class="px-5 py-8">
         <section class="mb-6" aria-label="Navigation links">
-          {siteConfig.navigation.items.map(item => (
+          {siteConfig.common.navigation.items.map(item => (
             <a href={item.href} class="block px-0 py-3 text-2xl leading-9 font-medium tracking-tight text-stone-50 hover:text-stone-300 transition-colors">
               {item.label}
             </a>
           ))}
         </section>
         <section class="px-0 py-3" aria-label="Call to action">
-          <a href={siteConfig.navigation.cta.href} class="btn-secondary w-full text-center block">
-            {siteConfig.navigation.cta.label}
+          <a href={siteConfig.common.navigation.cta.href} class="btn-secondary w-full text-center block">
+            {siteConfig.common.navigation.cta.label}
           </a>
         </section>
       </section>

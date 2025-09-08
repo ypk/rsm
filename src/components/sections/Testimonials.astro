@@ -1,0 +1,45 @@
+---
+import siteConfig from '../../data/siteConfig.json'
+---
+
+<section class="bg-stone-50 py-20 md:py-36">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-heading">
+        {siteConfig.sections.testimonials.title}
+      </h2>
+      <p class="text-lg md:text-xl text-emerald-900 max-w-3xl mx-auto">
+        {siteConfig.sections.testimonials.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {siteConfig.sections.testimonials.reviews.map(review => (
+        <div class="bg-white border border-stone-200 p-8 md:p-6 relative">
+          
+          <div class="absolute -top-4 left-6">
+            <div class="w-8 h-8 bg-white border border-stone-200 rotate-45"></div>
+          </div>
+          
+          <blockquote class="text-emerald-900 mb-6 italic">
+            "{review.quote}"
+          </blockquote>
+          
+          <div class="flex items-center space-x-4">
+            <img 
+              src={review.photo} 
+              alt={`${review.name} profile photo`}
+              class="w-12 h-12 rounded-full object-cover border-2 border-amber-700"
+              loading="lazy"
+            />
+            <div>
+              <h4 class="font-semibold text-slate-900 font-heading">{review.name}</h4>
+              <p class="text-sm text-stone-600">{review.title}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

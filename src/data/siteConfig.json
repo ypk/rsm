@@ -1,18 +1,45 @@
 {
-    "site": {
-        "name": "Right School of Motoring",
-        "tagline": "Professional Driving Lessons",
-        "description": "Learn to drive with confidence. Professional driving instructor offering manual and automatic lessons in [Your Area]. High pass rates, patient instruction, competitive prices.",
-        "url": "https://rightschoolofmotoring.com",
-        "image": "/og-image.jpg"
-    },
-    "business": {
-        "instructor": "Your Name",
-        "phone": "+44 7XXX XXXXXX",
-        "email": "info@rightschoolofmotoring.com",
-        "address": "123 Driving Lane\nManchester, M1 2AB\nUnited Kingdom",
-        "serviceArea": "Your Local Area",
-        "established": "2025"
+    "common": {
+        "site": {
+            "name": "Right School of Motoring",
+            "tagline": "Professional Driving Lessons",
+            "description": "Learn to drive with confidence. Professional driving instructor offering manual and automatic lessons in [Your Area]. High pass rates, patient instruction, competitive prices.",
+            "url": "https://rightschoolofmotoring.com",
+            "image": "/og-image.jpg"
+        },
+        "business": {
+            "instructor": "Your Name",
+            "phone": "+44 7XXX XXXXXX",
+            "email": "info@rightschoolofmotoring.com",
+            "address": "123 Driving Lane\nManchester, M1 2AB\nUnited Kingdom",
+            "serviceArea": "Your Local Area",
+            "established": "2025"
+        },
+        "social": [
+            {
+                "network": "facebook",
+                "url": "https://facebook.com/rightschoolofmotoring"
+            },
+            {
+                "network": "instagram",
+                "url": "https://instagram.com/rightschoolofmotoring"
+            },
+            {
+                "network": "twitter",
+                "url": "https://twitter.com/rightschoolofmotoring"
+            }
+        ],
+        "navigation": {
+            "items": [
+                { "href": "/about", "label": "About Me" },
+                { "href": "/services", "label": "My Services" },
+                { "href": "/contact", "label": "Contact" }
+            ],
+            "cta": {
+                "href": "/contact",
+                "label": "Book a Lesson"
+            }
+        }
     },
     "seo": {
         "keywords": [
@@ -24,29 +51,72 @@
         ],
         "author": "Right School of Motoring"
     },
-    "social": [
-        {
-            "network": "facebook",
-            "url": "https://facebook.com/rightschoolofmotoring"
+    "sections": {
+        "hero": {
+            "title": "Learn to Drive with Confidence",
+            "subtitle": "Professional driving instruction with high pass rates",
+            "cta": "Book Your First Lesson"
         },
-        {
-            "network": "instagram",
-            "url": "https://instagram.com/rightschoolofmotoring"
+        "whyChooseMe": {
+            "title": "Why Choose Me?",
+            "subtitle": "Experience the difference with professional, patient, and personalized driving instruction",
+            "usps": [
+                {
+                    "title": "High Pass Rate",
+                    "description": "95% first-time pass rate with proven teaching methods and comprehensive test preparation",
+                    "icon": "checkmark"
+                },
+                {
+                    "title": "Flexible Scheduling",
+                    "description": "Lessons available 7 days a week, including evenings and weekends to fit your busy lifestyle",
+                    "icon": "clock"
+                },
+                {
+                    "title": "Patient Instruction",
+                    "description": "Calm, encouraging approach that builds confidence and reduces anxiety for nervous learners",
+                    "icon": "user"
+                },
+                {
+                    "title": "Competitive Prices",
+                    "description": "Excellent value for money with transparent pricing and no hidden fees or extra charges",
+                    "icon": "pound"
+                }
+            ]
         },
-        {
-            "network": "twitter",
-            "url": "https://twitter.com/rightschoolofmotoring"
-        }
-    ],
-    "navigation": {
-        "items": [
-            { "href": "/about", "label": "About Me" },
-            { "href": "/services", "label": "My Services" },
-            { "href": "/contact", "label": "Contact" }
-        ],
-        "cta": {
-            "href": "/contact",
-            "label": "Book a Lesson"
+        "testimonials": {
+            "title": "What People Say About Me",
+            "subtitle": "Results I have helped create",
+            "reviews": [
+                {
+                    "name": "Sarah Johnson",
+                    "title": "Student",
+                    "photo": "/testimonials/sarah.jpg",
+                    "quote": "Passed first time with only 2 minor faults! The patient teaching style really helped build my confidence behind the wheel."
+                },
+                {
+                    "name": "Mark Thompson",
+                    "title": "Parent",
+                    "photo": "/testimonials/mark.jpg",
+                    "quote": "My daughter was so nervous about driving, but the calm approach made all the difference. Highly recommend!"
+                },
+                {
+                    "name": "Emma Wilson",
+                    "title": "Student",
+                    "photo": "/testimonials/emma.jpg",
+                    "quote": "Flexible scheduling was perfect for my busy work life. Professional instruction that got me through my test quickly."
+                },
+                {
+                    "name": "David Chen",
+                    "title": "Student",
+                    "photo": "/testimonials/david.jpg",
+                    "quote": "Clear explanations and plenty of practice made learning to drive enjoyable. Passed with confidence!"
+                }
+            ]
+        },
+        "contactMe": {
+            "title": "Ready to Start Learning?",
+            "subtitle": "Get in touch to book your first lesson",
+            "cta": "Contact Me Today"
         }
     }
 }
