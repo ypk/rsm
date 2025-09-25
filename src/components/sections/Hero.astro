@@ -3,7 +3,6 @@ import siteConfig from '../../data/siteConfig.json';
 
 const { hero } = siteConfig.sections;
 const { business } = siteConfig.common;
-const { pricing } = siteConfig.sections;
 
 // Support hero.heroImages as array of objects: { src, class }
 const heroImageEntry = hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)];
@@ -15,23 +14,21 @@ const randomImageClass = typeof heroImageEntry === 'string' ? '' : heroImageEntr
 ---
 
 <section
-  class="hero bg-gradient-to-br from-slate-900 to-slate-800"
-  style="min-height: calc(100vh - 120px);"
+  class="hero bg-gradient-to-br from-slate-900 to-slate-800 min-h-[calc(100vh-120px)] lg:min-h-[calc(100vh-95px)]"
   aria-labelledby="hero-heading"
 >
   <div
-    class="hero-container grid grid-cols-1 lg:grid-cols-2"
-    style="min-height: calc(100vh - 120px);"
+    class="hero-container grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-120px)] lg:min-h-[calc(100vh-95px)]"
   >
     <!-- Image Column (Mobile: on top, Desktop: right) -->
     <div
       class="hero-image relative aspect-[9/16] max-h-[74vh] h-auto order-1 w-full
-      lg:aspect-auto lg:max-h-none lg:h-[calc(100vh-120px)] lg:order-2"
+      lg:aspect-auto lg:max-h-none lg:h-[calc(100vh-95px)] lg:order-2"
     >
       <img
         src={randomImage}
         alt={`${business.instructor} - Professional Driving Instructor`}
-        class={`w-full h-full object-cover object-left lg:object-top ${randomImageClass}`}
+        class={`w-full h-full object-cover lg:object-top ${randomImageClass}`}
         loading="eager"
       />
       <!-- Floating Badge -->

@@ -1,22 +1,10 @@
 ---
-import siteConfig from '../../data/siteConfig.json'
+import siteConfig from '../../data/siteConfig.json';
 
 const { title, subtitle, columns } = siteConfig.sections.testimonials;
 const sectionName = 'testimonials';
 const gridCols = `grid grid-cols-1 md:grid-cols-${columns.variant} gap-12`;
 
-// Randomize testimonials
-const shuffleArray = (array) => {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
-
-const randomizedItems = columns?.randomize ? shuffleArray(columns.items) : columns.items;
-const displayItems = randomizedItems.slice(0, columns.variant);
 const sectionClass = `section-${sectionName}`;
 const itemClass = `${sectionName}-item`;
 const bubbleClass = `${sectionName}-bubble`;
@@ -24,11 +12,17 @@ const profileClass = `${sectionName}-profile`;
 const avatarClass = `${sectionName}-avatar`;
 ---
 
-<section id="testimonials" class={`${sectionClass} bg-stone-300 py-20 md:py-36`} aria-labelledby="testimonials-heading">
+<section
+  id="testimonials"
+  class={`${sectionClass} bg-stone-300 py-20 md:py-36`}
+  aria-labelledby="testimonials-heading"
+>
   <div class="max-w-7xl mx-auto px-6 md:px-12">
-
     <div class="text-left mb-12">
-      <h2 id="why-choose-heading" class="text-xl md:text-2xl font-bold text-slate-900 mb-4 font-heading">
+      <h2
+        id="why-choose-heading"
+        class="text-xl md:text-2xl font-bold text-slate-900 mb-4 font-heading"
+      >
         {title.toUpperCase()}
       </h2>
     </div>
@@ -42,35 +36,51 @@ const avatarClass = `${sectionName}-avatar`;
     </div>
 
     <div class={gridCols} role="list" aria-label="Customer testimonials">
-      {displayItems.map((item, index) => (
-        <article class={`${itemClass} text-center`} role="listitem" aria-labelledby={`testimonial-${index + 1}-author`}>
-          
-          <div class={`${bubbleClass} bg-white border border-stone-200 p-8 relative mb-4 min-h-[160px] flex items-center`} role="complementary">
-            <blockquote class="text-slate-900 italic" cite={`#testimonial-${index + 1}`}>
-              <span class="sr-only">Quote from {item.userProfile.name}:</span>
-              "{item.content}"
-            </blockquote>
-            
-            <div class="absolute -bottom-4 left-0" aria-hidden="true">
-              <div class="w-0 h-0 border-r-[30px] border-r-white border-b-[30px] border-b-transparent"></div>
+      {
+        columns.items.map((item, index) => (
+          <article
+            class={`${itemClass} text-center`}
+            role="listitem"
+            aria-labelledby={`testimonial-${index + 1}-author`}
+          >
+            <div
+              class={`${bubbleClass} bg-white border border-stone-200 p-8 relative mb-4 min-h-[160px] flex items-center`}
+              role="complementary"
+            >
+              <blockquote class="text-slate-900 italic" cite={`#testimonial-${index + 1}`}>
+                <span class="sr-only">Quote from {item.userProfile.name}:</span>"{item.content}"
+              </blockquote>
+
+              <div class="absolute -bottom-4 left-0" aria-hidden="true">
+                <div class="w-0 h-0 border-r-[30px] border-r-white border-b-[30px] border-b-transparent" />
+              </div>
             </div>
-          </div>
-          
-          <div class={`${profileClass} flex items-center space-x-4 pl-6`}>
-            <img 
-              src={`${import.meta.env.BASE_URL}${item.userProfile.photo}`} 
-              alt={`Portrait of ${item.userProfile.name}`}
-              class={`${avatarClass} w-16 h-16 rounded-full object-cover border-2 border-amber-700`}
-              loading="lazy"
-              role="img"
-            />
-            <div class="text-left">
-              <h3 id={`testimonial-${index + 1}-author`} class="font-semibold text-slate-900 font-heading">{item.userProfile.name}</h3>
-              <p class="text-sm text-stone-600" role="note">{item.userProfile.title}</p>
+
+            <div class={`${profileClass} flex items-center space-x-4 pl-6`}>
+              <img
+                src={`${import.meta.env.BASE_URL}${item.userProfile.photo}`}
+                alt={`Portrait of ${item.userProfile.name}`}
+                class={`${avatarClass} w-16 h-16 rounded-full object-cover border-2 border-amber-700`}
+                loading="lazy"
+                role="img"
+              />
+              <div class="text-left">
+                <h3
+                  id={`testimonial-${index + 1}-author`}
+                  class="font-semibold text-slate-900 font-heading"
+                >
+                  {item.userProfile.name}
+                </h3>
+                <p class="text-sm text-stone-600" role="note">
+                  {item.userProfile.title}
+                </p>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
+
+<script src={`${import.meta.env.BASE_URL}scripts/testimonials.js`} type="module" defer></script>
