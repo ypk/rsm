@@ -34,7 +34,7 @@ jobs:
         run: npm ci
       
       - name: Randomize hero image of the day
-        run: node scripts/randomize-hero-image-of-the-day.js
+        run: node scripts/randomize-hero-image-of-the-day.cjs
       - name: Build site
         run: npm run build
       
