@@ -3,14 +3,6 @@ import siteConfig from '../../data/siteConfig.json';
 
 const { hero } = siteConfig.sections;
 const { business } = siteConfig.common;
-
-// Support hero.heroImages as array of objects: { src, class }
-const heroImageEntry = hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)];
-const randomImage =
-  typeof heroImageEntry === 'string'
-    ? `${import.meta.env.BASE_URL}${heroImageEntry}`
-    : `${import.meta.env.BASE_URL}${heroImageEntry.src}`;
-const randomImageClass = typeof heroImageEntry === 'string' ? '' : heroImageEntry.class || '';
 ---
 
 <section
@@ -22,13 +14,17 @@ const randomImageClass = typeof heroImageEntry === 'string' ? '' : heroImageEntr
   >
     <!-- Image Column (Mobile: on top, Desktop: right) -->
     <div
-      class="hero-image relative aspect-[9/16] max-h-[74vh] h-auto order-1 w-full
-      lg:aspect-auto lg:max-h-none lg:h-[calc(100vh-95px)] lg:order-2"
+      class="hero-image relative aspect-[9/16] max-h-[74vh] h-auto order-1 w-full lg:aspect-auto lg:max-h-none lg:h-[calc(100vh-95px)] lg:order-2"
+      data-hero-images='{JSON.stringify([
+        { src: `${import.meta.env.BASE_URL}photos/lessons.jpeg`, class: "object-left" },
+        { src: `${import.meta.env.BASE_URL}photos/vehicle.jpeg`, class: "object-center" },
+        { src: `${import.meta.env.BASE_URL}photos/student.jpeg`, class: "object-right" }
+      ])}'
     >
       <img
-        src={randomImage}
+        src={`${import.meta.env.BASE_URL}photos/lessons.jpeg`}
         alt={`${business.instructor} - Professional Driving Instructor`}
-        class={`w-full h-full object-cover lg:object-top ${randomImageClass}`}
+        class="w-full h-full object-cover object-left lg:object-top"
         loading="eager"
       />
       <!-- Floating Badge -->
@@ -76,3 +72,5 @@ const randomImageClass = typeof heroImageEntry === 'string' ? '' : heroImageEntr
     </div>
   </div>
 </section>
+
+<script src={`${import.meta.env.BASE_URL}scripts/hero.js`} type="module" defer></script>
