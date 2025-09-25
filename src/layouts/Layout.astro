@@ -56,8 +56,8 @@ const {
     <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Orbit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
     
     <!-- Performance hints -->
-    <link rel="preload" href="/src/scripts/lightbox.js" as="script">
-    <link rel="preload" href="/src/scripts/booking.js" as="script">
+    <link rel="preload" href={`${import.meta.env.BASE_URL}/scripts/lightbox.js`} as="script">
+    <link rel="preload" href={`${import.meta.env.BASE_URL}/scripts/booking.js`} as="script">
     <link rel="dns-prefetch" href="https://wa.me">
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased font-sans">
