@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yourusername.github.io',
-  // base: '/right-school-of-motoring-site', // Commented out for local dev
+  site: 'https://ypk.github.io',
+  base: '/',
   vite: {
     plugins: [tailwindcss()],
     server: {
