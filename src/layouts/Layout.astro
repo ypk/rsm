@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css'
-import siteConfig from '../data/siteConfig.json'
+import '../styles/global.css';
+import siteConfig from '../data/siteConfig.json';
 
 export interface Props {
   title?: string;
@@ -8,67 +8,111 @@ export interface Props {
   image?: string;
 }
 
-const { 
+const {
   title = `${siteConfig.common.site.name} - ${siteConfig.common.site.tagline}`,
   description = siteConfig.common.site.description,
-  image = siteConfig.common.site.image
+  image = siteConfig.common.site.image,
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteConfig.common.site.url} />
+    <meta property="og:url" content={`${siteConfig.common.site.url}${import.meta.env.BASE_URL}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-  <meta property="og:image" content={`${import.meta.env.BASE_URL}photos/lessons.jpeg`} />
-    
+    <meta
+      property="og:image"
+      content={`${siteConfig.common.site.url}${import.meta.env.BASE_URL}${siteConfig.common.site.image.replace(/^\//, '')}`}
+    />
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={siteConfig.common.site.url} />
+    <meta
+      property="twitter:url"
+      content={`${siteConfig.common.site.url}${import.meta.env.BASE_URL}`}
+    />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={`${import.meta.env.BASE_URL}photos/lessons.jpeg`} />
-    
+    <meta
+      property="twitter:image"
+      content={`${siteConfig.common.site.url}${import.meta.env.BASE_URL}${siteConfig.common.site.image.replace(/^\//, '')}`}
+    />
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
+
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Orbit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Orbit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Orbit:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Orbit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      /></noscript
+    >
+
     <!-- Performance hints -->
-  <link rel="preload" href={`${import.meta.env.BASE_URL}scripts/lightbox.js`} as="script">
-  <link rel="preload" href={`${import.meta.env.BASE_URL}scripts/booking.js`} as="script">
-    <link rel="dns-prefetch" href="https://wa.me">
+    <link rel="preload" href={`${import.meta.env.BASE_URL}scripts/lightbox.js`} as="script" />
+    <link rel="preload" href={`${import.meta.env.BASE_URL}scripts/booking.js`} as="script" />
+    <link rel="dns-prefetch" href="https://wa.me" />
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased font-sans">
     <!-- Critical CSS inline -->
     <style>
-      body{font-family:system-ui,sans-serif;margin:0;padding:0}
-      .hero{min-height:100vh;background:linear-gradient(135deg,#0f172a,#1e293b);display:grid;grid-template-columns:1fr;align-items:center}
-      @media(min-width:1024px){.hero{grid-template-columns:1fr 1fr}}
-      .btn-secondary{background:#b45309;color:white;padding:0.75rem 1.5rem;border:none;cursor:pointer;transition:background 0.2s}
-      .btn-secondary:hover{background:#92400e}
-      header{background:#0f172a;position:relative}
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .btn-secondary {
+        background: #b45309;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .btn-secondary:hover {
+        background: #92400e;
+      }
+      header {
+        background: #0f172a;
+        position: relative;
+      }
     </style>
     <slot />
   </body>
