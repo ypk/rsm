@@ -5,7 +5,7 @@ const { hero } = siteConfig.sections;
 const { business } = siteConfig.common;
 const { pricing } = siteConfig.sections;
 
-const randomImage = hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)];
+const randomImage = `${import.meta.env.BASE_URL}${hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)]}`;
 ---
 
 <section class="hero bg-gradient-to-br from-slate-900 to-slate-800" style="min-height: calc(100vh - 120px);" aria-labelledby="hero-heading">

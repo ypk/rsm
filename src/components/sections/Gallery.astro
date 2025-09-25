@@ -39,12 +39,12 @@ const captionClass = `${sectionName}-caption`;
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-20" role="list" aria-label="Photo gallery of driving lessons and student success stories">
       {randomizedItems?.map((item, index) => (
         <article class={`${itemClass} group`} role="listitem" aria-labelledby={`gallery-${index + 1}-caption`}>
-          <div class="relative overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-lightbox-trigger data-image={item.image} data-alt={item.alt} data-caption={item.caption} data-index={index}>
+          <div class="relative overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-lightbox-trigger data-image={`${import.meta.env.BASE_URL}${item.image}`} data-alt={item.alt} data-caption={item.caption} data-index={index}>
             <div class="absolute inset-0 flex items-center justify-center bg-stone-100 gallery-spinner">
               <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-700"></div>
             </div>
             <img 
-              src={item.image} 
+              src={`${import.meta.env.BASE_URL}${item.image}`} 
               alt={item.alt}
               class={`${imageClass} w-full h-[300px] object-cover opacity-0 transition-opacity duration-300`}
               loading="lazy"

@@ -58,7 +58,7 @@ const avatarClass = `${sectionName}-avatar`;
           
           <div class={`${profileClass} flex items-center space-x-4 pl-6`}>
             <img 
-              src={item.userProfile.photo} 
+              src={`${import.meta.env.BASE_URL}${item.userProfile.photo}`} 
               alt={`Portrait of ${item.userProfile.name}`}
               class={`${avatarClass} w-16 h-16 rounded-full object-cover border-2 border-amber-700`}
               loading="lazy"
