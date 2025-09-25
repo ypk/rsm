@@ -1,27 +1,54 @@
 ---
 import siteConfig from '../../data/siteConfig.json'
+
+const { title, subtitle, columns } = siteConfig.sections.testimonials;
+const sectionName = 'testimonials';
+const gridCols = `grid grid-cols-1 md:grid-cols-${columns.variant} gap-12`;
+
+// Randomize testimonials
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+const randomizedItems = columns?.randomize ? shuffleArray(columns.items) : columns.items;
+const displayItems = randomizedItems.slice(0, columns.variant);
+const sectionClass = `section-${sectionName}`;
+const itemClass = `${sectionName}-item`;
+const bubbleClass = `${sectionName}-bubble`;
+const profileClass = `${sectionName}-profile`;
+const avatarClass = `${sectionName}-avatar`;
 ---
 
-<section class="bg-stone-300 py-20 md:py-36" aria-labelledby="testimonials-heading">
+<section id="testimonials" class={`${sectionClass} bg-stone-300 py-20 md:py-36`} aria-labelledby="testimonials-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
-    
-    <div class="text-center mb-12 md:mb-16">
-      <h2 id="testimonials-heading" class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-heading">
-        {siteConfig.sections.testimonials.title}
+
+    <div class="text-left mb-12">
+      <h2 id="why-choose-heading" class="text-xl md:text-2xl font-bold text-slate-900 mb-4 font-heading">
+        {title.toUpperCase()}
       </h2>
-      <p class="text-lg md:text-xl text-slate-700 max-w-3xl mx-auto">
-        {siteConfig.sections.testimonials.subtitle}
+    </div>
+    <div class="flex flex-col md:flex-row mb-12 md:mb-16 gap-4 md:gap-8">
+      <p class="text-2xl md:text-3xl text-slate-700 w-full md:w-3/4">
+        {subtitle.toUpperCase()}
+      </p>
+      <p class="text-sm md:text-base text-slate-700 w-full md:w-1/4">
+        Our students share how passing their test transformed their daily lives.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12" role="list" aria-label="Customer testimonials">
-      {siteConfig.sections.testimonials.reviews.slice(0, 3).map((review, index) => (
-        <article class="text-center" role="listitem" aria-labelledby={`testimonial-${index + 1}-author`}>
+    <div class={gridCols} role="list" aria-label="Customer testimonials">
+      {displayItems.map((item, index) => (
+        <article class={`${itemClass} text-center`} role="listitem" aria-labelledby={`testimonial-${index + 1}-author`}>
           
-          <div class="bg-white border border-stone-200 p-6 relative mb-4" role="complementary">
+          <div class={`${bubbleClass} bg-white border border-stone-200 p-8 relative mb-4 min-h-[160px] flex items-center`} role="complementary">
             <blockquote class="text-slate-900 italic" cite={`#testimonial-${index + 1}`}>
-              <span class="sr-only">Quote from {review.name}:</span>
-              "{review.quote}"
+              <span class="sr-only">Quote from {item.userProfile.name}:</span>
+              "{item.content}"
             </blockquote>
             
             <div class="absolute -bottom-4 left-0" aria-hidden="true">
@@ -29,17 +56,17 @@ import siteConfig from '../../data/siteConfig.json'
             </div>
           </div>
           
-          <div class="flex items-center space-x-4 pl-6">
+          <div class={`${profileClass} flex items-center space-x-4 pl-6`}>
             <img 
-              src={review.photo} 
-              alt={`Portrait of ${review.name}`}
-              class="w-16 h-16 rounded-full object-cover border-2 border-amber-700"
+              src={item.userProfile.photo} 
+              alt={`Portrait of ${item.userProfile.name}`}
+              class={`${avatarClass} w-16 h-16 rounded-full object-cover border-2 border-amber-700`}
               loading="lazy"
               role="img"
             />
             <div class="text-left">
-              <h3 id={`testimonial-${index + 1}-author`} class="font-semibold text-slate-900 font-heading">{review.name}</h3>
-              <p class="text-sm text-stone-600" role="note">{review.title}</p>
+              <h3 id={`testimonial-${index + 1}-author`} class="font-semibold text-slate-900 font-heading">{item.userProfile.name}</h3>
+              <p class="text-sm text-stone-600" role="note">{item.userProfile.title}</p>
             </div>
           </div>
         </article>

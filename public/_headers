@@ -1,0 +1,33 @@
+/*
+  # Enable compression
+  Content-Encoding: gzip
+  
+  # Cache static assets
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  # HTML compression and caching
+  Cache-Control: public, max-age=3600
+  Content-Encoding: gzip
+
+/*.css
+  # CSS compression and long-term caching
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Encoding: gzip
+
+/*.js
+  # JavaScript compression and long-term caching
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Encoding: gzip
+
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+  # Image optimization headers
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  # SVG compression
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Encoding: gzip

@@ -3,59 +3,22 @@ import Layout from '../layouts/Layout.astro'
 import Header from '../components/ui/Header.astro'
 import Footer from '../components/ui/Footer.astro'
 import WhyChooseMe from '../components/sections/WhyChooseMe.astro'
+import Gallery from '../components/sections/Gallery.astro'
+import Hero from '../components/sections/Hero.astro'
+import Pricing from '../components/sections/Pricing.astro'
 import Testimonials from '../components/sections/Testimonials.astro'
+import BackToTop from '../components/ui/BackToTop.astro'
+import BookingPopup from '../components/ui/BookingPopup.astro'
 ---
 
 <Layout>
     <Header />
-    <div class="section-padding text-center bg-stone-50 min-h-screen">
-        <h1 class="text-4xl font-bold mb-4 font-heading text-slate-900">
-            Right School of Motoring
-        </h1>
-        
-        <p class="text-lg mb-8 max-w-2xl mx-auto text-emerald-900">
-            Testing our **True Royal Colors** - Bold, Regal, and Professional
-        </p>
-        
-        <!-- Button Tests -->
-        <div class="space-x-4 mb-12">
-            <button class="btn-primary">Book Lesson</button>
-            <button class="btn-secondary">Learn More</button>
-            <button class="btn-accent">Call Now</button>
-            <button class="btn-outline">View Prices</button>
-        </div>
-        
-        <!-- Card Test -->
-        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-2 font-heading text-slate-900">Manual Lessons</h3>
-                <p class="text-emerald-900">Learn with traditional manual transmission</p>
-                <div class="mt-4">
-                    <span class="text-2xl font-bold text-amber-700">£35</span>
-                    <span class="text-stone-500">/hour</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-2 font-heading text-slate-900">Automatic Lessons</h3>
-                <p class="text-emerald-900">Easier learning with automatic transmission</p>
-                <div class="mt-4">
-                    <span class="text-2xl font-bold text-amber-700">£40</span>
-                    <span class="text-stone-500">/hour</span>
-                </div>
-            </div>
-            
-            <div class="card border-2 border-amber-700">
-                <h3 class="text-xl font-semibold mb-2 font-heading text-amber-700">Intensive Course</h3>
-                <p class="text-emerald-900">Fast-track to your license</p>
-                <div class="mt-4">
-                    <span class="text-2xl font-bold text-amber-700">£450</span>
-                    <span class="text-stone-500">/week</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <Hero />
+    <Pricing />
     <WhyChooseMe />
+    <Gallery />
     <Testimonials />
     <Footer />
+    <BackToTop />
+    <BookingPopup />
 </Layout>

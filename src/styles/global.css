@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom Font Definitions */
 @theme {
   --font-sans: 'Cairo', ui-sans-serif, system-ui, sans-serif;
@@ -9,19 +14,19 @@
 /* Royal Colors using TailwindCSS built-in classes */
 @layer components {
   .btn-primary {
-    @apply bg-slate-900 hover:bg-slate-800 text-stone-50 px-6 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply bg-slate-900 hover:bg-slate-800 text-stone-50 px-6 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg text-lg cursor-pointer;
   }
   
   .btn-secondary {
-    @apply bg-amber-700 hover:bg-amber-800 text-stone-50 px-6 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply bg-amber-700 hover:bg-amber-800 text-stone-50 px-6 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg text-lg cursor-pointer;
   }
   
   .btn-accent {
-    @apply bg-emerald-900 hover:bg-emerald-800 text-stone-50 px-6 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply bg-emerald-900 hover:bg-emerald-800 text-stone-50 px-6 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg text-lg cursor-pointer;
   }
   
   .btn-outline {
-    @apply border-2 border-emerald-900 text-emerald-900 hover:bg-emerald-900 hover:text-stone-50 px-6 py-3 font-semibold transition-all duration-200;
+    @apply border-2 border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-stone-50 px-6 py-3 font-semibold transition-all duration-200 text-lg cursor-pointer;
   }
   
   .card {
@@ -30,5 +35,25 @@
   
   .section-padding {
     @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .header-nav-link {
+    @apply text-stone-300 hover:text-stone-50 px-3 py-2 text-lg font-medium transition-colors duration-200 cursor-pointer;
+  }
+  
+  .header-nav-link:hover {
+    @apply bg-slate-800;
+  }
+  
+  .social-link {
+    @apply text-stone-400 hover:text-stone-50 transition-colors border-2 border-stone-600 hover:border-stone-400 p-2 focus:outline-none focus:ring-2 focus:ring-stone-50 rounded-md cursor-pointer;
+  }
+  
+  .social-link:hover {
+    @apply border-stone-400;
+  }
+  
+  a:hover svg {
+    @apply text-stone-400;
   }
 }

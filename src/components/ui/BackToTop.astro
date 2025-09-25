@@ -1,0 +1,53 @@
+---
+// Back to top button component
+---
+
+<button 
+  id="back-to-top" 
+  class="fixed bottom-6 right-6 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white transition-all duration-300 z-30 flex items-center justify-center opacity-0 invisible translate-y-4"
+  aria-label="Back to top"
+>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.getElementById('back-to-top');
+    const heroSection = document.querySelector('section'); // First section (hero)
+    
+    if (!backToTopBtn) return;
+    
+    // Show/hide button based on scroll position
+    const toggleButton = () => {
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const shouldShow = window.scrollY > heroBottom;
+        
+        if (shouldShow) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+          backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+          backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+      }
+    };
+    
+    // Scroll to top function
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
+    
+    // Event listeners
+    window.addEventListener('scroll', toggleButton);
+    backToTopBtn.addEventListener('click', scrollToTop);
+    
+    // Initial check
+    toggleButton();
+  });
+</script>

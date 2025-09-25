@@ -1,0 +1,56 @@
+---
+import siteConfig from '../../data/siteConfig.json'
+
+const { hero } = siteConfig.sections;
+const { business } = siteConfig.common;
+const { pricing } = siteConfig.sections;
+
+const randomImage = hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)];
+---
+
+<section class="hero bg-gradient-to-br from-slate-900 to-slate-800" style="min-height: calc(100vh - 120px);" aria-labelledby="hero-heading">
+  <div class="hero-container grid grid-cols-1 lg:grid-cols-2" style="min-height: calc(100vh - 120px);">
+    
+    <!-- Content Column -->
+    <div class="hero-content flex items-center justify-center text-center lg:text-left px-6 md:px-12 py-12 lg:py-0">
+      <div class="hero-text">
+        <h1 id="hero-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-heading leading-tight">
+          {hero.title}
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-stone-300 mb-8 leading-relaxed">
+          {hero.subtitle}
+        </p>
+        
+        <!-- CTA Button -->
+        <div class="mb-8">
+          <button onclick="openBookingPopup()" class="btn-secondary text-xl px-8 py-4 inline-flex items-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v14a2 2 0 002 2z"/>
+            </svg>
+            {hero.cta}
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Image Column -->
+    <div class="hero-image relative h-64" style="height: calc(100vh - 120px);">
+      <img 
+        src={randomImage} 
+        alt={`${business.instructor} - Professional Driving Instructor`}
+        class="w-full h-full object-cover object-top"
+        loading="eager"
+      />
+      
+      <!-- Floating Badge -->
+      {business.showQualification && (
+        <div class="absolute bottom-8 right-5 bg-amber-700 text-white px-6 py-3 font-semibold shadow-lg transform rotate-3">
+          <div class="text-lg">{business.qualification}</div>
+          <div class="text-base">Since {business.established}</div>
+        </div>
+      )}
+    </div>
+    
+  </div>
+</section>
