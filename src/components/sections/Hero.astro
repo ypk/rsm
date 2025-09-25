@@ -3,6 +3,8 @@ import siteConfig from '../../data/siteConfig.json';
 
 const { hero } = siteConfig.sections;
 const { business } = siteConfig.common;
+// Type workaround for JSON import
+const imageOfTheDay: any = hero.imageOfTheDay;
 ---
 
 <section
@@ -17,9 +19,9 @@ const { business } = siteConfig.common;
       class="hero-image relative aspect-[9/16] max-h-[74vh] h-auto order-1 w-full lg:aspect-auto lg:max-h-none lg:h-[calc(100vh-95px)] lg:order-2"
     >
       <img
-        src={`${import.meta.env.BASE_URL}photos/student.jpeg`}
+        src={`${import.meta.env.BASE_URL}${imageOfTheDay?.src ?? 'photos/student.jpeg'}`}
         alt={`${business.instructor} - Professional Driving Instructor`}
-        class="w-full h-full object-cover object-right lg:object-top"
+        class={`w-full h-full object-cover ${imageOfTheDay?.class ?? 'object-right lg:object-top'}`}
         loading="eager"
       />
       <!-- Floating Badge -->

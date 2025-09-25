@@ -63,7 +63,8 @@
         { "src": "photos/lessons.jpeg", "class": "object-left" },
         { "src": "photos/vehicle.jpeg", "class": "object-center" },
         { "src": "photos/student.jpeg", "class": "object-right" }
-      ]
+      ],
+      "imageOfTheDay": null
     },
     "whyChooseMe": {
       "title": "Why Choose Me?",
