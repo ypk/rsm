@@ -13,7 +13,7 @@
       "email": "mouradakkache@yahoo.com",
       "address": "35 Badger Close\nMaidenhead\nSL6 2TE",
       "serviceArea": "Maidenhead",
-      "established": "2025",
+      "established": "2002",
       "qualification": "ADI Qualified",
       "showQualification": true
     },
@@ -249,7 +249,7 @@
       "packages": [
         {
           "name": "Manual Lessons",
-          "price": "£35",
+          "price": "£40",
           "duration": "per hour",
           "description": "Learn in a manual car with dual controls",
           "features": [
@@ -262,7 +262,7 @@
         },
         {
           "name": "Automatic Lessons",
-          "price": "£40",
+          "price": "£45",
           "duration": "per hour",
           "description": "Easier learning with automatic transmission",
           "features": [
@@ -279,15 +279,15 @@
           "duration": "per week",
           "description": "Fast-track to your driving test",
           "features": [
-            "5 days intensive training",
-            "Test booking included",
+            "5-10 days intensive training",
+            "All-inclusive pricing",
             "Theory test preparation",
             "High success rate"
           ],
           "popular": false
         }
       ],
-      "note": "All prices include VAT. Block bookings available with discounts."
+      "note": "All prices include VAT. Block bookings for Automatic available with discounts."
     },
     "booking": {
       "title": "Book Your Lesson",
@@ -300,12 +300,12 @@
         {
           "value": "manual",
           "label": "Manual Lesson",
-          "price": "£35/hour"
+          "price": "£40/hour"
         },
         {
           "value": "automatic",
           "label": "Automatic Lesson",
-          "price": "£40/hour"
+          "price": "£45/hour"
         },
         {
           "value": "intensive",
