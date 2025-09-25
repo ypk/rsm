@@ -5,7 +5,13 @@ const { hero } = siteConfig.sections;
 const { business } = siteConfig.common;
 const { pricing } = siteConfig.sections;
 
-const randomImage = `${import.meta.env.BASE_URL}${hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)]}`;
+// Support hero.heroImages as array of objects: { src, class }
+const heroImageEntry = hero.heroImages[Math.floor(Math.random() * hero.heroImages.length)];
+const randomImage =
+  typeof heroImageEntry === 'string'
+    ? `${import.meta.env.BASE_URL}${heroImageEntry}`
+    : `${import.meta.env.BASE_URL}${heroImageEntry.src}`;
+const randomImageClass = typeof heroImageEntry === 'string' ? '' : heroImageEntry.class || '';
 ---
 
 <section
@@ -18,11 +24,13 @@ const randomImage = `${import.meta.env.BASE_URL}${hero.heroImages[Math.floor(Mat
     style="min-height: calc(100vh - 120px);"
   >
     <!-- Image Column (Mobile: on top, Desktop: left) -->
-    <div class="hero-image relative h-64 lg:order-1 order-1" style="height: calc(100vh - 120px);">
+    <div
+      class="hero-image relative aspect-[9/16] max-h-[74vh] h-auto order-1 lg:h-[calc(100vh-120px)] lg:aspect-auto lg:order-1 w-full"
+    >
       <img
         src={randomImage}
         alt={`${business.instructor} - Professional Driving Instructor`}
-        class="w-full h-full object-cover object-top"
+        class={`w-full h-full object-cover object-left lg:object-top ${randomImageClass}`}
         loading="eager"
       />
       <!-- Floating Badge -->

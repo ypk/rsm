@@ -59,7 +59,11 @@
       "title": "Learn to Drive with Confidence",
       "subtitle": "Professional driving instruction with high pass rates",
       "cta": "Book Your First Lesson",
-      "heroImages": ["photos/lessons.jpeg", "photos/vehicle.jpeg", "photos/student.jpeg"]
+      "heroImages": [
+        { "src": "photos/lessons.jpeg", "class": "object-left" },
+        { "src": "photos/vehicle.jpeg", "class": "object-center" },
+        { "src": "photos/student.jpeg", "class": "object-right" }
+      ]
     },
     "whyChooseMe": {
       "title": "Why Choose Me?",
@@ -248,6 +252,7 @@
       "subtitle": "Transparent pricing with no hidden fees",
       "packages": [
         {
+          "value": "manual",
           "name": "Manual Lessons",
           "price": "£40",
           "duration": "per hour",
@@ -261,6 +266,7 @@
           "popular": false
         },
         {
+          "value": "automatic",
           "name": "Automatic Lessons",
           "price": "£45",
           "duration": "per hour",
@@ -274,6 +280,7 @@
           "popular": true
         },
         {
+          "value": "intensive",
           "name": "Intensive Course",
           "price": "£450",
           "duration": "per week",
@@ -296,23 +303,7 @@
         "maxMonths": 3,
         "description": "Bookings available up to 3 months in advance"
       },
-      "lessonTypes": [
-        {
-          "value": "manual",
-          "label": "Manual Lesson",
-          "price": "£40/hour"
-        },
-        {
-          "value": "automatic",
-          "label": "Automatic Lesson",
-          "price": "£45/hour"
-        },
-        {
-          "value": "intensive",
-          "label": "Intensive Course",
-          "price": "£450/week"
-        }
-      ],
+
       "messageTemplate": {
         "greeting": "Hi {businessName},\n\nI would like to book a driving lesson:\n\n",
         "fields": ["- Name: {name}", "- Preferred Date: {date}", "- Lesson Type: {lessonType}"],
