@@ -10,12 +10,15 @@ const ctaButton = navigation.cta;
 <header class="bg-slate-900 shadow-md">
   <div class="max-w-7xl mx-auto px-6 py-2 md:px-12 md:py-4">
     <div class="flex justify-between items-center h-14 md:h-16">
-      <section class="flex-shrink-0" aria-label="Site logo">
-        <a
-          href="/"
-          class="header-logo font-heading text-2xl leading-7 font-medium md:font-normal text-stone-50 hover:text-stone-300 transition-colors"
-        >
-          <span class="md:hidden">RSM</span>
+      <section class="flex-shrink-0 flex items-center gap-2" aria-label="Site logo">
+        <a href="/" class="header-logo flex items-center gap-2">
+          <img
+            id="siteLogo"
+            src={`${import.meta.env.BASE_URL}assets/logo.svg`}
+            alt={`${site.name} logo`}
+            class="h-8 w-auto md:h-10"
+            loading="eager"
+          />
           <span class="hidden md:inline">{site.name}</span>
         </a>
       </section>
@@ -121,6 +124,9 @@ const ctaButton = navigation.cta;
   header.menu-active .header-menu-btn {
     color: black !important;
   }
+  .logo-black {
+    filter: brightness(0) invert(0);
+  }
 </style>
 
 <script defer>
@@ -134,7 +140,15 @@ const ctaButton = navigation.cta;
       btn?.setAttribute('aria-expanded', (!isExpanded).toString());
       btn?.classList.toggle('active');
       mobileMenu?.classList.toggle('hidden');
-      document.querySelector('header')?.classList.toggle('menu-active');
+      const header = document.querySelector('header');
+      header?.classList.toggle('menu-active');
+      // Change logo color to black when menu is open (mobile)
+      const logo = document.getElementById('siteLogo');
+      if (header?.classList.contains('menu-active')) {
+        logo?.classList.add('logo-black');
+      } else {
+        logo?.classList.remove('logo-black');
+      }
     }
 
     function closeMenu() {
