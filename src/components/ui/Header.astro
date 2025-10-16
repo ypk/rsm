@@ -161,8 +161,10 @@ const ctaButton = navigation.cta;
       const logo = document.getElementById('siteLogo');
       if (header?.classList.contains('menu-active')) {
         logo?.classList.add('logo-black');
+        logo?.classList.remove('logo-filter');
       } else {
         logo?.classList.remove('logo-black');
+        logo?.classList.add('logo-filter');
       }
     }
 
