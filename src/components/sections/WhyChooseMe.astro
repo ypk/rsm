@@ -1,8 +1,8 @@
 ---
-import siteConfig from '../../data/siteConfig.json'
+import siteConfig from '../../data/siteConfig.json';
 
 const getIcon = (iconType: string) => {
-  switch(iconType) {
+  switch (iconType) {
     case 'checkmark':
       return `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>`;
     case 'clock':
@@ -17,12 +17,17 @@ const getIcon = (iconType: string) => {
 };
 
 const getIconLabel = (iconType: string): string => {
-  switch(iconType) {
-    case 'checkmark': return 'Success checkmark icon';
-    case 'clock': return 'Clock scheduling icon';
-    case 'user': return 'Person instruction icon';
-    case 'pound': return 'Pound sterling pricing icon';
-    default: return 'Feature icon';
+  switch (iconType) {
+    case 'checkmark':
+      return 'Success checkmark icon';
+    case 'clock':
+      return 'Clock scheduling icon';
+    case 'user':
+      return 'Person instruction icon';
+    case 'pound':
+      return 'Pound sterling pricing icon';
+    default:
+      return 'Feature icon';
   }
 };
 
@@ -36,33 +41,67 @@ const titleClass = `${sectionName}-title`;
 const contentClass = `${sectionName}-content`;
 ---
 
-<section id="why-choose-me" class={`${sectionClass} bg-slate-900 py-20 md:py-20`} aria-labelledby="why-choose-heading">
+<section
+  id="why-choose-me"
+  class={`${sectionClass} bg-stone-50 dark:bg-slate-900 py-20 md:py-20`}
+  aria-labelledby="why-choose-heading"
+>
   <div class="max-w-7xl mx-auto px-6 md:px-12">
-    
     <div class="text-center mb-12">
-      <h2 id="why-choose-heading" class="text-xl md:text-2xl font-bold text-stone-50 mb-4 font-heading">
+      <h2
+        id="why-choose-heading"
+        class="text-xl md:text-2xl font-bold text-stone-800 dark:text-stone-50 mb-4 font-heading"
+      >
         {title.toUpperCase()}
       </h2>
     </div>
     <div class="text-center mb-12 md:mb-16">
-      <p class="text-2xl md:text-3xl text-stone-300 max-w-3xl mx-auto">
+      <p class="text-2xl md:text-3xl text-stone-600 dark:text-stone-300 max-w-3xl mx-auto">
         {subtitle.toUpperCase()}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-2" role="list" aria-label="Key benefits and unique selling points">
-      {columns.items.map((item, index) => (
-        <article class={`${itemClass} group text-center bg-white/10 hover:bg-stone-50 backdrop-blur-sm border border-white/20 hover:border-stone-200 px-8 py-10 md:p-6 transition-all duration-300 cursor-pointer`} role="listitem" aria-labelledby={`usp-${index + 1}-title`}>
-          <div class={`${iconClass} w-16 h-16 bg-amber-700 group-hover:bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-300`} role="img" aria-label={getIconLabel(item.icon)}>
-            <svg class={item.icon === 'pound' ? 'w-10 h-10 text-white' : 'w-8 h-8 text-white'} fill="none" stroke="currentColor" stroke-width={item.icon === 'pound' ? '2' : '1'} viewBox={item.icon === 'pound' ? '0 0 64 64' : '0 0 24 24'} aria-hidden="true" set:html={getIcon(item.icon)}>
-            </svg>
-          </div>
-          <h3 id={`usp-${index + 1}-title`} class={`${titleClass} text-xl font-semibold text-stone-50 group-hover:text-black mb-4 font-heading transition-colors duration-300`}>{item.title}</h3>
-          <p class={`${contentClass} text-stone-300 group-hover:text-black transition-colors duration-300`}>
-            {item.content}
-          </p>
-        </article>
-      ))
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-2"
+      role="list"
+      aria-label="Key benefits and unique selling points"
+    >
+      {
+        columns.items.map((item, index) => (
+          <article
+            class={`${itemClass} group text-center bg-white/10 hover:bg-stone-50 backdrop-blur-sm border border-white/20 hover:border-stone-200 px-8 py-10 md:p-6 transition-all duration-300 cursor-pointer`}
+            role="listitem"
+            aria-labelledby={`usp-${index + 1}-title`}
+          >
+            <div
+              class={`${iconClass} w-16 h-16 bg-amber-700 group-hover:bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-300`}
+              role="img"
+              aria-label={getIconLabel(item.icon)}
+            >
+              <svg
+                class={item.icon === 'pound' ? 'w-10 h-10 text-white' : 'w-8 h-8 text-white'}
+                fill="none"
+                stroke="currentColor"
+                stroke-width={item.icon === 'pound' ? '2' : '1'}
+                viewBox={item.icon === 'pound' ? '0 0 64 64' : '0 0 24 24'}
+                aria-hidden="true"
+                set:html={getIcon(item.icon)}
+              ></svg>
+            </div>
+            <h3
+              id={`usp-${index + 1}-title`}
+              class={`${titleClass} text-xl font-semibold text-black dark:text-stone-50 group-hover:text-black mb-4 font-heading transition-colors duration-300`}
+            >
+              {item.title}
+            </h3>
+            <p
+              class={`${contentClass} text-gray-700 dark:text-stone-300 group-hover:text-black transition-colors duration-300`}
+            >
+              {item.content}
+            </p>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>

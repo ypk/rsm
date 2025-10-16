@@ -7,26 +7,31 @@ const navItems = navigation.items;
 const ctaButton = navigation.cta;
 ---
 
-<header class="bg-slate-900 shadow-md">
+<header
+  class="bg-stone-200 dark:bg-slate-900 shadow-md border-b border-stone-300 dark:border-slate-700"
+>
   <div class="max-w-7xl mx-auto px-6 py-2 md:px-12 md:py-4">
-    <div class="flex justify-between items-center h-14 md:h-16">
+    <div class="flex justify-between flex-2 items-center h-14 md:h-16">
       <section class="flex-shrink-0 flex items-center gap-2" aria-label="Site logo">
         <a href="/" class="header-logo flex items-center gap-2">
           <img
             id="siteLogo"
             src={`${import.meta.env.BASE_URL}assets/logo.svg`}
             alt={`${site.name} logo`}
-            class="h-8 w-auto md:h-10"
+            class="h-8 w-auto md:h-10 logo-filter"
             loading="eager"
           />
-          <span class="hidden md:inline">{site.name}</span>
+          <span class="sr-only">{site.name}</span>
         </a>
       </section>
 
-      <nav class="hidden md:flex space-x-8" aria-label="Main navigation">
+      <nav class="hidden md:flex space-x-6" aria-label="Main navigation">
         {
           navItems.map((item) => (
-            <a href={item.href} class="header-nav-link">
+            <a
+              href={item.href}
+              class="header-nav-link text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-50 hover:bg-stone-100 dark:hover:bg-slate-800 px-3 py-2 transition-colors"
+            >
               {item.label}
             </a>
           ))
@@ -41,7 +46,7 @@ const ctaButton = navigation.cta;
 
       <section class="flex md:hidden" aria-label="Mobile menu toggle">
         <button
-          class="menu-btn mobile-menu-button header-menu-btn w-12 h-8 border-0 bg-transparent cursor-pointer p-0 text-stone-300 hover:text-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-50 focus:text-stone-50 transition-colors"
+          class="menu-btn mobile-menu-button header-menu-btn w-12 h-8 border-0 bg-transparent cursor-pointer p-0 text-black dark:text-stone-300 hover:text-gray-600 dark:hover:text-stone-50 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-stone-50 focus:text-gray-600 dark:focus:text-stone-50 transition-colors"
           id="menuBtn"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
@@ -75,7 +80,7 @@ const ctaButton = navigation.cta;
     </div>
 
     <nav
-      class="mobile-menu hidden md:hidden fixed top-0 left-0 right-0 bottom-0 z-40 bg-slate-900"
+      class="mobile-menu hidden md:hidden fixed top-0 left-0 right-0 bottom-0 z-40 bg-white dark:bg-slate-900 border-t dark:border-slate-700"
       id="mobile-menu"
       aria-label="Mobile navigation"
       style="top: 72px;"
@@ -86,7 +91,7 @@ const ctaButton = navigation.cta;
             navItems.map((item) => (
               <a
                 href={item.href}
-                class="block px-0 py-3 text-2xl leading-9 font-medium tracking-tight text-stone-50 hover:text-stone-300 transition-colors"
+                class="block px-0 py-3 text-2xl leading-9 font-medium tracking-tight text-black dark:text-stone-50 hover:text-gray-600 dark:hover:text-stone-300 transition-colors"
               >
                 {item.label}
               </a>
@@ -126,6 +131,16 @@ const ctaButton = navigation.cta;
   }
   .logo-black {
     filter: brightness(0) invert(0);
+  }
+
+  .logo-filter {
+    filter: brightness(0) saturate(100%) invert(0%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .logo-filter {
+      filter: brightness(0) saturate(100%) invert(100%);
+    }
   }
 </style>
 
