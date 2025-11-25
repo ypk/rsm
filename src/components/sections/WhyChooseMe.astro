@@ -50,9 +50,9 @@ const contentClass = `${sectionName}-content`;
     <div class="text-center mb-12">
       <h2
         id="why-choose-heading"
-        class="text-xl md:text-2xl font-bold text-stone-800 dark:text-stone-50 mb-4 font-heading"
+        class="text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-50 mb-4 font-heading"
       >
-        {title.toUpperCase()}
+        {title}
       </h2>
     </div>
     <div class="text-center mb-12 md:mb-16">
@@ -86,7 +86,7 @@ const contentClass = `${sectionName}-content`;
                 viewBox={item.icon === 'pound' ? '0 0 64 64' : '0 0 24 24'}
                 aria-hidden="true"
                 set:html={getIcon(item.icon)}
-              ></svg>
+              />
             </div>
             <h3
               id={`usp-${index + 1}-title`}

@@ -9,8 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      host: true,
-      allowedHosts: ['884bb541bd08.ngrok-free.app']
+      host: true
     },
     build: {
       minify: 'terser',

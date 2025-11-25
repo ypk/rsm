@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rightschoolofmotoring.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://rightschoolofmotoring.com/gallery</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rightschoolofmotoring.com/pricing</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rightschoolofmotoring.com/testimonials</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rightschoolofmotoring.com/why-choose-me</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

@@ -1,5 +1,5 @@
 ---
-import siteConfig from '../../data/siteConfig.json'
+import siteConfig from '../../data/siteConfig.json';
 
 const { title, subtitle, packages, note } = siteConfig.sections.pricing;
 const sectionName = 'pricing';
@@ -7,11 +7,17 @@ const sectionClass = `section-${sectionName}`;
 const itemClass = `${sectionName}-item`;
 ---
 
-<section id="pricing" class={`${sectionClass} bg-white py-20 md:py-20`} aria-labelledby="pricing-heading">
+<section
+  id="pricing"
+  class={`${sectionClass} bg-white py-20 md:py-20`}
+  aria-labelledby="pricing-heading"
+>
   <div class="max-w-7xl mx-auto px-6 md:px-12">
-    
     <div class="text-center mb-12 md:mb-16">
-      <h2 id="pricing-heading" class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-heading">
+      <h2
+        id="pricing-heading"
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-heading"
+      >
         {title}
       </h2>
       <p class="text-lg md:text-xl text-slate-700 max-w-3xl mx-auto">
@@ -20,63 +26,79 @@ const itemClass = `${sectionName}-item`;
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8" role="list" aria-label="Pricing packages">
-      {packages.map((pkg, index) => (
-        <article class={`${itemClass} relative bg-stone-50 border-2 ${pkg.popular ? 'border-amber-700 bg-amber-50 transform scale-105 shadow-lg' : 'border-stone-200'} p-8 transition-all duration-300 hover:shadow-lg`} role="listitem">
-          
-          {pkg.popular && (
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-              <span class="bg-amber-700 text-white px-4 py-2 text-sm font-semibold">
-                MOST POPULAR
-              </span>
-            </div>
-          )}
-          
-          <div class="text-center mb-6">
-            <h3 class="text-xl font-bold text-slate-900 mb-2 font-heading">
-              {pkg.name}
-            </h3>
-            <div class="mb-4">
-              <span class="text-4xl font-bold text-slate-900">{pkg.price}</span>
-              <span class="text-slate-600 ml-2">{pkg.duration}</span>
-            </div>
-            <p class="text-slate-700">
-              {pkg.description}
-            </p>
-          </div>
+      {
+        packages.map((pkg, index) => (
+          <article
+            class={`${itemClass} relative bg-stone-50 border-2 ${pkg.popular ? 'border-amber-700 bg-amber-50 transform scale-105 shadow-lg' : 'border-stone-200'} p-8 transition-all duration-300 hover:shadow-lg`}
+            role="listitem"
+            aria-labelledby={`pricing-package-${index + 1}-title`}
+          >
+            {pkg.popular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class="bg-amber-700 text-white px-4 py-2 text-sm font-semibold">
+                  MOST POPULAR
+                </span>
+              </div>
+            )}
 
-          <ul class="space-y-3 mb-8" role="list">
-            {pkg.features.map((feature) => (
-              <li class="flex items-center text-slate-700" role="listitem">
-                <svg class="w-5 h-5 text-emerald-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                {feature}
-              </li>
-            ))}
-          </ul>
+            <div class="text-center mb-6">
+              <h3
+                id={`pricing-package-${index + 1}-title`}
+                class="text-xl font-bold text-slate-900 mb-2 font-heading"
+              >
+                {pkg.name}
+              </h3>
+              <div class="mb-4">
+                <span class="text-4xl font-bold text-slate-900">{pkg.price}</span>
+                <span class="text-slate-600 ml-2">{pkg.duration}</span>
+              </div>
+              <p class="text-slate-700">{pkg.description}</p>
+            </div>
 
-          <div class="text-center">
-            <button 
-              onclick={`openBookingPopup('${pkg.name.toLowerCase().split(' ')[0]}')`}
-              class={`w-full py-3 px-6 font-semibold transition-all duration-200 ${
-                pkg.popular 
-                  ? 'bg-amber-700 hover:bg-amber-800 text-white' 
-                  : 'bg-slate-900 hover:bg-slate-800 text-white'
-              }`}
-            >
-              Book {pkg.name}
-            </button>
-          </div>
-        </article>
-      ))}
+            <ul class="space-y-3 mb-8" role="list">
+              {pkg.features.map((feature) => (
+                <li class="flex items-center text-slate-700" role="listitem">
+                  <svg
+                    class="w-5 h-5 text-emerald-600 mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div class="text-center">
+              <button
+                onclick={`openBookingPopup('${pkg.name.toLowerCase().split(' ')[0]}')`}
+                class={`w-full py-3 px-6 font-semibold transition-all duration-200 ${
+                  pkg.popular
+                    ? 'bg-amber-700 hover:bg-amber-800 text-white'
+                    : 'bg-slate-900 hover:bg-slate-800 text-white'
+                }`}
+              >
+                Book {pkg.name}
+              </button>
+            </div>
+          </article>
+        ))
+      }
     </div>
 
-    {note && (
-      <div class="text-center mt-12">
-        <p class="text-sm text-slate-600 max-w-2xl mx-auto">
-          {note}
-        </p>
-      </div>
-    )}
+    {
+      note && (
+        <div class="text-center mt-12">
+          <p class="text-sm text-slate-600 max-w-2xl mx-auto">{note}</p>
+        </div>
+      )
+    }
   </div>
 </section>

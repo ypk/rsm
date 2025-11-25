@@ -20,10 +20,10 @@ const avatarClass = `${sectionName}-avatar`;
   <div class="max-w-7xl mx-auto px-6 md:px-12">
     <div class="text-left mb-12">
       <h2
-        id="why-choose-heading"
-        class="text-xl md:text-2xl font-bold text-stone-800 mb-4 font-heading"
+        id="testimonials-heading"
+        class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 font-heading"
       >
-        {title.toUpperCase()}
+        {title}
       </h2>
     </div>
     <div class="flex flex-col md:flex-row mb-12 md:mb-16 gap-4 md:gap-8">
@@ -51,7 +51,8 @@ const avatarClass = `${sectionName}-avatar`;
                 class="text-black dark:text-slate-900 italic"
                 cite={`#testimonial-${index + 1}`}
               >
-                <span class="sr-only">Quote from {item.userProfile.name}:</span>"{item.content}"
+                <span class="sr-only">Quote from {item.userProfile.name}:</span>
+                <q>{item.content}</q>
               </blockquote>
 
               <div class="absolute -bottom-4 left-0" aria-hidden="true">
