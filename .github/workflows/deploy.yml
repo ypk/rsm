@@ -35,6 +35,9 @@ jobs:
       
       - name: Randomize hero image of the day
         run: node scripts/randomize-hero-image-of-the-day.cjs
+
+      - name: Generate Bing verification file
+        run: node scripts/generate-bing-verification-txt.cjs
       - name: Build site
         run: npm run build
       
