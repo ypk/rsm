@@ -1,15 +1,26 @@
 ---
 import siteConfig from '../../data/siteConfig.json';
 
-const { title, subtitle, columns } = siteConfig.sections.testimonials;
+const { title, subtitle, columns, items } = siteConfig.sections.testimonials;
 const sectionName = 'testimonials';
-const gridCols = `grid grid-cols-1 md:grid-cols-${columns.variant} gap-12`;
+const gridCols = `grid grid-cols-1 md:grid-cols-${columns.maxColumns} gap-12`;
 
 const sectionClass = `section-${sectionName}`;
 const itemClass = `${sectionName}-item`;
 const bubbleClass = `${sectionName}-bubble`;
 const profileClass = `${sectionName}-profile`;
 const avatarClass = `${sectionName}-avatar`;
+
+let testimonialItems = items || [];
+if (columns.randomize) {
+  testimonialItems = [...testimonialItems]
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+if ('maxVisible' in columns && Number(columns.maxVisible)) {
+  testimonialItems = testimonialItems.slice(0, Number(columns.maxVisible));
+}
 ---
 
 <section
@@ -37,7 +48,7 @@ const avatarClass = `${sectionName}-avatar`;
 
     <div class={gridCols} role="list" aria-label="Customer testimonials">
       {
-        columns.items.map((item, index) => (
+        testimonialItems.map((item, index) => (
           <article
             class={`${itemClass} text-center`}
             role="listitem"

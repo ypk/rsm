@@ -6,16 +6,16 @@ type GalleryItem = {
 };
 
 type GalleryColumns = {
-  variant: number;
+  maxColumns: number;
   randomize: boolean;
   maxVisible?: number;
-  items: GalleryItem[];
 };
 
 type GalleryConfig = {
   title: string;
   subtitle: string;
   columns: GalleryColumns;
+  items: GalleryItem[];
 };
 
 import siteConfig from '../../data/siteConfig.json';
@@ -23,9 +23,10 @@ import siteConfig from '../../data/siteConfig.json';
 const galleryConfig: GalleryConfig = siteConfig.sections.gallery || {
   title: 'Gallery',
   subtitle: 'Photo gallery',
-  columns: { variant: 3, randomize: false, items: [] },
+  columns: { maxColumns: 3, randomize: false, maxVisible: 9 },
+  items: [],
 };
-const { title, subtitle, columns } = galleryConfig;
+const { title, subtitle, columns, items } = galleryConfig;
 
 const sectionName = 'gallery';
 const sectionClass = `section-${sectionName}`;
@@ -33,7 +34,7 @@ const itemClass = `${sectionName}-item`;
 const imageClass = `${sectionName}-image`;
 const captionClass = `${sectionName}-caption`;
 
-let galleryItems: GalleryItem[] = columns.items || [];
+let galleryItems: GalleryItem[] = items || [];
 if (columns.randomize) {
   galleryItems = [...galleryItems]
     .map((value: GalleryItem) => ({ value, sort: Math.random() }))
@@ -43,6 +44,8 @@ if (columns.randomize) {
 if ('maxVisible' in columns && Number(columns.maxVisible)) {
   galleryItems = galleryItems.slice(0, Number(columns.maxVisible));
 }
+
+const gridClass = `grid grid-cols-1 md:grid-cols-${columns.maxColumns ?? 3} lg:grid-cols-${columns.maxColumns ?? 3} gap-6 mb-20`;
 ---
 
 ---
@@ -68,7 +71,7 @@ if ('maxVisible' in columns && Number(columns.maxVisible)) {
     </div>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-20"
+      class={gridClass}
       role="list"
       aria-label="Photo gallery of driving lessons and student success stories"
     >

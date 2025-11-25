@@ -101,154 +101,155 @@
       "title": "What People Say About Me",
       "subtitle": "Results I have helped create",
       "columns": {
-        "variant": 3,
+        "maxColumns": 3,
         "randomize": true,
-        "maxVisible": 9,
-        "items": [
-          {
-            "content": "Passed first time with only 2 minor faults! The patient teaching style really helped build my confidence behind the wheel.",
-            "userProfile": {
-              "name": "Sarah Johnson",
-              "title": "Student",
-              "photo": "testimonials/sarah.jpg"
-            }
-          },
-          {
-            "content": "My daughter was so nervous about driving, but the calm approach made all the difference. Highly recommend!",
-            "userProfile": {
-              "name": "Mark Thompson",
-              "title": "Parent",
-              "photo": "testimonials/mark.jpg"
-            }
-          },
-          {
-            "content": "Flexible scheduling was perfect for my busy work life. Professional instruction that got me through my test quickly.",
-            "userProfile": {
-              "name": "Emma Wilson",
-              "title": "Student",
-              "photo": "testimonials/emma.jpg"
-            }
-          },
-          {
-            "content": "Clear explanations and plenty of practice made learning to drive enjoyable. Passed with confidence!",
-            "userProfile": {
-              "name": "David Chen",
-              "title": "Student",
-              "photo": "testimonials/david.jpg"
-            }
+        "maxVisible": 3
+      },
+      "items": [
+        {
+          "content": "Passed first time with only 2 minor faults! The patient teaching style really helped build my confidence behind the wheel.",
+          "userProfile": {
+            "name": "Sarah Johnson",
+            "title": "Student",
+            "photo": "testimonials/sarah.jpg"
           }
-        ]
-      }
+        },
+        {
+          "content": "My daughter was so nervous about driving, but the calm approach made all the difference. Highly recommend!",
+          "userProfile": {
+            "name": "Mark Thompson",
+            "title": "Parent",
+            "photo": "testimonials/mark.jpg"
+          }
+        },
+        {
+          "content": "Flexible scheduling was perfect for my busy work life. Professional instruction that got me through my test quickly.",
+          "userProfile": {
+            "name": "Emma Wilson",
+            "title": "Student",
+            "photo": "testimonials/emma.jpg"
+          }
+        },
+        {
+          "content": "Clear explanations and plenty of practice made learning to drive enjoyable. Passed with confidence!",
+          "userProfile": {
+            "name": "David Chen",
+            "title": "Student",
+            "photo": "testimonials/david.jpg"
+          }
+        }
+      ]
     },
     "gallery": {
       "title": "Our Success Stories",
       "subtitle": "Celebrating our students' achievements - real people, real results",
       "columns": {
-        "variant": 3,
+        "maxColumns": 3,
         "randomize": true,
-        "items": [
-          {
-            "image": "gallery/student-1.jpeg",
-            "alt": "Happy student holding pass certificate beside Right School of Motoring vehicle",
-            "caption": "Another First Time Pass!"
-          },
-          {
-            "image": "gallery/student-2.jpeg",
-            "alt": "Successful student with pass certificate and Right School of Motoring car",
-            "caption": "Driving Test Success"
-          },
-          {
-            "image": "gallery/student-3.jpeg",
-            "alt": "Proud student celebrating pass with certificate",
-            "caption": "Mission Accomplished"
-          },
-          {
-            "image": "gallery/student-4.jpeg",
-            "alt": "Student with pass certificate standing by instructor vehicle",
-            "caption": "Dreams Come True"
-          },
-          {
-            "image": "gallery/student-5.jpeg",
-            "alt": "Celebrating student holding driving test pass certificate",
-            "caption": "Freedom Achieved"
-          },
-          {
-            "image": "gallery/student-6.jpeg",
-            "alt": "Another successful student with pass certificate",
-            "caption": "Ready for the Road"
-          },
-          {
-            "image": "gallery/student-7.jpeg",
-            "alt": "Student celebrating driving test pass with certificate",
-            "caption": "Test Passed Successfully"
-          },
-          {
-            "image": "gallery/student-8.jpeg",
-            "alt": "Happy student with pass certificate beside driving school car",
-            "caption": "Journey Complete"
-          },
-          {
-            "image": "gallery/student-9.jpeg",
-            "alt": "Successful driving student holding pass certificate",
-            "caption": "New Driver on the Road"
-          },
-          {
-            "image": "gallery/student-10.jpeg",
-            "alt": "Student celebrating driving test pass",
-            "caption": "Another Success Story"
-          },
-          {
-            "image": "gallery/student-11.jpeg",
-            "alt": "Happy student with pass certificate",
-            "caption": "First Time Pass"
-          },
-          {
-            "image": "gallery/student-12.jpeg",
-            "alt": "Student holding driving test pass certificate",
-            "caption": "Mission Accomplished"
-          },
-          {
-            "image": "gallery/student-13.jpeg",
-            "alt": "Successful student with certificate",
-            "caption": "Road Ready"
-          },
-          {
-            "image": "gallery/student-14.jpeg",
-            "alt": "Student celebrating test pass",
-            "caption": "Dreams Achieved"
-          },
-          {
-            "image": "gallery/student-15.jpeg",
-            "alt": "Happy new driver with certificate",
-            "caption": "Freedom Unlocked"
-          },
-          {
-            "image": "gallery/student-16.jpeg",
-            "alt": "Student with pass certificate",
-            "caption": "Test Conquered"
-          },
-          {
-            "image": "gallery/student-17.jpeg",
-            "alt": "Celebrating student holding certificate",
-            "caption": "Victory Achieved"
-          },
-          {
-            "image": "gallery/student-18.jpeg",
-            "alt": "Student with driving test pass",
-            "caption": "Success Story"
-          },
-          {
-            "image": "gallery/student-19.jpeg",
-            "alt": "Happy student celebrating pass",
-            "caption": "Journey Complete"
-          },
-          {
-            "image": "gallery/student-20.jpeg",
-            "alt": "Student holding pass certificate proudly",
-            "caption": "Goal Reached"
-          }
-        ]
-      }
+        "maxVisible": 9
+      },
+      "items": [
+        {
+          "image": "gallery/student-1.jpeg",
+          "alt": "Happy student holding pass certificate beside Right School of Motoring vehicle",
+          "caption": "Another First Time Pass!"
+        },
+        {
+          "image": "gallery/student-2.jpeg",
+          "alt": "Successful student with pass certificate and Right School of Motoring car",
+          "caption": "Driving Test Success"
+        },
+        {
+          "image": "gallery/student-3.jpeg",
+          "alt": "Proud student celebrating pass with certificate",
+          "caption": "Mission Accomplished"
+        },
+        {
+          "image": "gallery/student-4.jpeg",
+          "alt": "Student with pass certificate standing by instructor vehicle",
+          "caption": "Dreams Come True"
+        },
+        {
+          "image": "gallery/student-5.jpeg",
+          "alt": "Celebrating student holding driving test pass certificate",
+          "caption": "Freedom Achieved"
+        },
+        {
+          "image": "gallery/student-6.jpeg",
+          "alt": "Another successful student with pass certificate",
+          "caption": "Ready for the Road"
+        },
+        {
+          "image": "gallery/student-7.jpeg",
+          "alt": "Student celebrating driving test pass with certificate",
+          "caption": "Test Passed Successfully"
+        },
+        {
+          "image": "gallery/student-8.jpeg",
+          "alt": "Happy student with pass certificate beside driving school car",
+          "caption": "Journey Complete"
+        },
+        {
+          "image": "gallery/student-9.jpeg",
+          "alt": "Successful driving student holding pass certificate",
+          "caption": "New Driver on the Road"
+        },
+        {
+          "image": "gallery/student-10.jpeg",
+          "alt": "Student celebrating driving test pass",
+          "caption": "Another Success Story"
+        },
+        {
+          "image": "gallery/student-11.jpeg",
+          "alt": "Happy student with pass certificate",
+          "caption": "First Time Pass"
+        },
+        {
+          "image": "gallery/student-12.jpeg",
+          "alt": "Student holding driving test pass certificate",
+          "caption": "Mission Accomplished"
+        },
+        {
+          "image": "gallery/student-13.jpeg",
+          "alt": "Successful student with certificate",
+          "caption": "Road Ready"
+        },
+        {
+          "image": "gallery/student-14.jpeg",
+          "alt": "Student celebrating test pass",
+          "caption": "Dreams Achieved"
+        },
+        {
+          "image": "gallery/student-15.jpeg",
+          "alt": "Happy new driver with certificate",
+          "caption": "Freedom Unlocked"
+        },
+        {
+          "image": "gallery/student-16.jpeg",
+          "alt": "Student with pass certificate",
+          "caption": "Test Conquered"
+        },
+        {
+          "image": "gallery/student-17.jpeg",
+          "alt": "Celebrating student holding certificate",
+          "caption": "Victory Achieved"
+        },
+        {
+          "image": "gallery/student-18.jpeg",
+          "alt": "Student with driving test pass",
+          "caption": "Success Story"
+        },
+        {
+          "image": "gallery/student-19.jpeg",
+          "alt": "Happy student celebrating pass",
+          "caption": "Journey Complete"
+        },
+        {
+          "image": "gallery/student-20.jpeg",
+          "alt": "Student holding pass certificate proudly",
+          "caption": "Goal Reached"
+        }
+      ]
     },
     "pricing": {
       "title": "Lesson Prices",
