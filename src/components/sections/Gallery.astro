@@ -41,9 +41,6 @@ if (columns.randomize) {
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
 }
-if ('maxVisible' in columns && Number(columns.maxVisible)) {
-  galleryItems = galleryItems.slice(0, Number(columns.maxVisible));
-}
 
 const gridClass = `grid grid-cols-1 md:grid-cols-${columns.maxColumns ?? 3} lg:grid-cols-${columns.maxColumns ?? 3} gap-6 mb-20`;
 ---
@@ -74,13 +71,15 @@ const gridClass = `grid grid-cols-1 md:grid-cols-${columns.maxColumns ?? 3} lg:g
       class={gridClass}
       role="list"
       aria-label="Photo gallery of driving lessons and student success stories"
+      id="gallery-grid"
     >
       {
         galleryItems.map((item, index) => (
           <article
-            class={`${itemClass} group`}
+            class={`${itemClass} group${index >= 9 ? ' hidden' : ''}`}
             role="listitem"
             aria-labelledby={`gallery-${index + 1}-caption`}
+            data-gallery-index={index}
           >
             <div
               class="relative overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
@@ -114,65 +113,75 @@ const gridClass = `grid grid-cols-1 md:grid-cols-${columns.maxColumns ?? 3} lg:g
         ))
       }
     </div>
-  </div>
-
-  <div
-    id="lightbox"
-    class="fixed inset-0 z-50 hidden items-center justify-center backdrop-blur-sm bg-black/80 transition-all duration-300 opacity-0"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="lightbox-caption"
-  >
-    <div class="relative w-full h-full md:w-auto md:h-auto md:max-w-4xl md:max-h-[90vh] md:mx-4">
+    <div class="flex justify-center mt-8">
       <button
-        id="lightbox-close"
-        class="fixed top-4 right-4 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white hover:text-stone-300 transition-colors z-20 flex items-center justify-center"
-        aria-label="Close lightbox"
+        id="show-more-gallery"
+        class="w-full max-w-xs py-3 px-6 font-semibold transition-all duration-200 cursor-pointer bg-slate-900 hover:bg-slate-800 text-white"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+        Show More
       </button>
+    </div>
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-50 hidden items-center justify-center backdrop-blur-sm bg-black/80 transition-all duration-300 opacity-0"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lightbox-caption"
+    >
+      <div class="relative w-full h-full md:w-auto md:h-auto md:max-w-4xl md:max-h-[90vh] md:mx-4">
+        <button
+          id="lightbox-close"
+          class="fixed top-4 right-4 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white hover:text-stone-300 transition-colors z-20 flex items-center justify-center cursor-pointer"
+          aria-label="Close lightbox"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
 
-      <button
-        id="lightbox-prev"
-        class="fixed left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white hover:text-stone-300 transition-colors z-20 flex items-center justify-center"
-        aria-label="Previous image"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"
-          ></path>
-        </svg>
-      </button>
-      <button
-        id="lightbox-next"
-        class="fixed right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white hover:text-stone-300 transition-colors z-20 flex items-center justify-center"
-        aria-label="Next image"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-          ></path>
-        </svg>
-      </button>
+        <button
+          id="lightbox-prev"
+          class="fixed left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white hover:text-stone-300 transition-colors z-20 flex items-center justify-center cursor-pointer"
+          aria-label="Previous image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button
+          id="lightbox-next"
+          class="fixed right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-slate-600/80 hover:bg-slate-700/90 text-white hover:text-stone-300 transition-colors z-20 flex items-center justify-center cursor-pointer"
+          aria-label="Next image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </button>
 
-      <div
-        class="bg-white shadow-2xl overflow-hidden transform transition-transform duration-300 w-full h-full md:w-auto md:h-auto md:scale-95"
-      >
-        <img
-          id="lightbox-image"
-          class="w-full h-full md:w-full md:h-auto md:max-h-[85vh] object-cover md:object-contain transition-opacity duration-200"
-          alt=""
-        />
-        <div class="absolute bottom-0 left-0 right-0 p-4 bg-stone-50 md:relative">
-          <h3
-            id="lightbox-caption"
-            class="text-lg font-semibold text-black dark:text-slate-900 font-heading"
-          >
-          </h3>
+        <div
+          class="bg-white shadow-2xl overflow-hidden transform transition-transform duration-300 w-full h-full md:w-auto md:h-auto md:scale-95"
+        >
+          <img
+            id="lightbox-image"
+            class="w-full h-full md:w-full md:h-auto md:max-h-[85vh] object-cover md:object-contain transition-opacity duration-200"
+            alt=""
+          />
+          <div class="absolute bottom-0 left-0 right-0 p-4 bg-stone-50 md:relative">
+            <h3
+              id="lightbox-caption"
+              class="text-lg font-semibold text-black dark:text-slate-900 font-heading"
+            >
+            </h3>
+          </div>
         </div>
       </div>
     </div>
@@ -180,3 +189,4 @@ const gridClass = `grid grid-cols-1 md:grid-cols-${columns.maxColumns ?? 3} lg:g
 </section>
 
 <script src={`${import.meta.env.BASE_URL}scripts/lightbox.js`} type="module" defer></script>
+<script src={`${import.meta.env.BASE_URL}scripts/gallery.js`} defer></script>

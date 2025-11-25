@@ -1,4 +1,4 @@
-// Booking popup functionality with SOLID principles
+// Booking popup functionality
 
 // Constants
 const SELECTORS = {
@@ -10,25 +10,25 @@ const SELECTORS = {
   TYPE: '#lesson-type',
   EMAIL: '#contact-email',
   SMS: '#contact-sms',
-  WHATSAPP: '#contact-whatsapp'
+  WHATSAPP: '#contact-whatsapp',
 };
 
 const CLASSES = {
   HIDDEN: 'hidden',
   FLEX: 'flex',
   OPACITY_0: 'opacity-0',
-  SCALE_95: 'scale-95'
+  SCALE_95: 'scale-95',
 };
 
 const TIMING = {
-  TRANSITION: 300
+  TRANSITION: 300,
 };
 
 // Business configuration
 const BUSINESS = {
   phone: '07832185711',
   email: 'mouradakkache@yahoo.com',
-  name: 'Right School of Motoring'
+  name: 'Right School of Motoring',
 };
 
 // Utility functions
@@ -42,7 +42,7 @@ const Utils = {
     const maxDate = new Date();
     maxDate.setMonth(maxDate.getMonth() + 3); // 3 months from now
     const maxDateStr = maxDate.toISOString().split('T')[0];
-    
+
     const dateInput = document.querySelector(SELECTORS.DATE);
     dateInput?.setAttribute('min', today);
     dateInput?.setAttribute('max', maxDateStr);
@@ -54,7 +54,7 @@ const Utils = {
       return false;
     }
     return true;
-  }
+  },
 };
 
 // Animation controller
@@ -67,7 +67,7 @@ class AnimationController {
   show() {
     this.element.classList.remove(CLASSES.HIDDEN);
     this.element.classList.add(CLASSES.FLEX);
-    
+
     requestAnimationFrame(() => {
       this.element.classList.remove(CLASSES.OPACITY_0);
       this.modal.classList.remove(CLASSES.SCALE_95);
@@ -77,7 +77,7 @@ class AnimationController {
   hide(callback) {
     this.element.classList.add(CLASSES.OPACITY_0);
     this.modal.classList.add(CLASSES.SCALE_95);
-    
+
     setTimeout(() => {
       this.element.classList.add(CLASSES.HIDDEN);
       this.element.classList.remove(CLASSES.FLEX);
@@ -96,7 +96,7 @@ class MessageGenerator {
 
   generate(name, date, type) {
     const lessonTypeLabel = this.getLessonTypeLabel(type);
-    
+
     return `Hi ${BUSINESS.name},
 
 I would like to book a driving lesson:
@@ -122,11 +122,11 @@ class ContactHandler {
 
     const message = this.messageGenerator.generate(name, date, type);
     const encodedMessage = encodeURIComponent(message);
-    
+
     const urls = {
       email: `mailto:${BUSINESS.email}?subject=${encodeURIComponent('Driving Lesson Booking Request')}&body=${encodedMessage}`,
       sms: `sms:${BUSINESS.phone}?body=${encodedMessage}`,
-      whatsapp: `https://wa.me/44${BUSINESS.phone.substring(1)}?text=${encodedMessage}`
+      whatsapp: `https://wa.me/44${BUSINESS.phone.substring(1)}?text=${encodedMessage}`,
     };
 
     const url = urls[method];
@@ -145,7 +145,7 @@ export class BookingPopup {
     this.animation = new AnimationController(this.elements.popup);
     this.messageGenerator = new MessageGenerator();
     this.contactHandler = new ContactHandler(this.messageGenerator);
-    
+
     this.bindEvents();
   }
 
@@ -156,7 +156,7 @@ export class BookingPopup {
       form: document.querySelector(SELECTORS.FORM),
       nameInput: document.querySelector(SELECTORS.NAME),
       dateInput: document.querySelector(SELECTORS.DATE),
-      typeSelect: document.querySelector(SELECTORS.TYPE)
+      typeSelect: document.querySelector(SELECTORS.TYPE),
     };
   }
 
@@ -164,11 +164,16 @@ export class BookingPopup {
     // Close button only
     this.elements.closeBtn?.addEventListener('click', () => this.close());
 
-
     // Contact method buttons
-    document.querySelector(SELECTORS.EMAIL)?.addEventListener('click', () => this.handleContact('email'));
-    document.querySelector(SELECTORS.SMS)?.addEventListener('click', () => this.handleContact('sms'));
-    document.querySelector(SELECTORS.WHATSAPP)?.addEventListener('click', () => this.handleContact('whatsapp'));
+    document
+      .querySelector(SELECTORS.EMAIL)
+      ?.addEventListener('click', () => this.handleContact('email'));
+    document
+      .querySelector(SELECTORS.SMS)
+      ?.addEventListener('click', () => this.handleContact('sms'));
+    document
+      .querySelector(SELECTORS.WHATSAPP)
+      ?.addEventListener('click', () => this.handleContact('whatsapp'));
 
     // Keyboard support
     document.addEventListener('keydown', (e) => {
@@ -180,12 +185,12 @@ export class BookingPopup {
 
   open(lessonType = null) {
     Utils.setMinDate();
-    
+
     // Pre-select lesson type if provided
     if (lessonType && this.elements.typeSelect) {
       this.elements.typeSelect.value = lessonType;
     }
-    
+
     this.animation.show();
     Utils.toggleBodyScroll(true);
   }

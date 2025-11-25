@@ -1,6 +1,19 @@
 ---
 import '../styles/global.css';
+import fs from 'fs';
+import path from 'path';
 import siteConfig from '../data/siteConfig.json';
+
+// Read pre-generated schema-org.json
+let schemaJson = '';
+try {
+  schemaJson = fs.readFileSync(
+    path.resolve(import.meta.env.SITE, 'public/schema-org.json'),
+    'utf-8'
+  );
+} catch (e) {
+  schemaJson = '';
+}
 
 export interface Props {
   title?: string;
@@ -8,11 +21,29 @@ export interface Props {
   image?: string;
 }
 
-const {
-  title = `${siteConfig.common.site.name} - ${siteConfig.common.site.tagline}`,
-  description = siteConfig.common.site.description,
-  image = siteConfig.common.site.image,
-} = Astro.props;
+// Save config values in variables
+const siteName = siteConfig.common.site.name;
+const siteTagline = siteConfig.common.site.tagline;
+const siteUrl = siteConfig.common.site.url;
+const siteImage = siteConfig.common.site.image;
+const siteDescription = siteConfig.common.site.description;
+const businessEmail = siteConfig.common.business.email;
+const businessPhone = siteConfig.common.business.phone;
+const businessAddress = siteConfig.common.business.address;
+const businessServiceArea = siteConfig.common.business.serviceArea;
+
+// Prepare address fields
+const addressLines = businessAddress.split('\n');
+const streetAddress = addressLines[0];
+const addressLocality = addressLines[1];
+const postalCode = addressLines[2];
+const phoneInternational = '+44' + businessPhone.replace(/\D/g, '').replace(/^0/, '');
+
+const { title, description, image } = {
+  title: Astro.props.title ?? `${siteName} - ${siteTagline}`,
+  description: Astro.props.description ?? siteDescription,
+  image: Astro.props.image ?? siteImage,
+};
 ---
 
 <!doctype html>
@@ -97,6 +128,9 @@ const {
     <link rel="preload" href={`${import.meta.env.BASE_URL}scripts/lightbox.js`} as="script" />
     <link rel="preload" href={`${import.meta.env.BASE_URL}scripts/booking.js`} as="script" />
     <link rel="dns-prefetch" href="https://wa.me" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" set:html={schemaJson} />
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased font-sans">
     <!-- Critical CSS inline -->
