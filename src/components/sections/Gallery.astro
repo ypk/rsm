@@ -1,19 +1,51 @@
 ---
+type GalleryItem = {
+  image: string;
+  alt: string;
+  caption: string;
+};
+
+type GalleryColumns = {
+  variant: number;
+  randomize: boolean;
+  maxVisible?: number;
+  items: GalleryItem[];
+};
+
+type GalleryConfig = {
+  title: string;
+  subtitle: string;
+  columns: GalleryColumns;
+};
+
 import siteConfig from '../../data/siteConfig.json';
 
-const { title, subtitle, columns } = siteConfig.sections.gallery || {
+const galleryConfig: GalleryConfig = siteConfig.sections.gallery || {
   title: 'Gallery',
   subtitle: 'Photo gallery',
-  columns: { variant: 3, items: [] },
+  columns: { variant: 3, randomize: false, items: [] },
 };
-const sectionName = 'gallery';
+const { title, subtitle, columns } = galleryConfig;
 
+const sectionName = 'gallery';
 const sectionClass = `section-${sectionName}`;
 const itemClass = `${sectionName}-item`;
 const imageClass = `${sectionName}-image`;
 const captionClass = `${sectionName}-caption`;
+
+let galleryItems: GalleryItem[] = columns.items || [];
+if (columns.randomize) {
+  galleryItems = [...galleryItems]
+    .map((value: GalleryItem) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+if ('maxVisible' in columns && Number(columns.maxVisible)) {
+  galleryItems = galleryItems.slice(0, Number(columns.maxVisible));
+}
 ---
 
+---
 <section
   id="gallery"
   class={`${sectionClass} bg-white dark:bg-slate-800 py-20 md:py-20`}
@@ -41,7 +73,7 @@ const captionClass = `${sectionName}-caption`;
       aria-label="Photo gallery of driving lessons and student success stories"
     >
       {
-        columns.items?.map((item, index) => (
+        galleryItems.map((item, index) => (
           <article
             class={`${itemClass} group`}
             role="listitem"
@@ -144,5 +176,4 @@ const captionClass = `${sectionName}-caption`;
   </div>
 </section>
 
-<script src={`${import.meta.env.BASE_URL}scripts/gallery.js`} type="module" defer></script>
 <script src={`${import.meta.env.BASE_URL}scripts/lightbox.js`} type="module" defer></script>

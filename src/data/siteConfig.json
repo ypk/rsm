@@ -103,6 +103,7 @@
       "columns": {
         "variant": 3,
         "randomize": true,
+        "maxVisible": 9,
         "items": [
           {
             "content": "Passed first time with only 2 minor faults! The patient teaching style really helped build my confidence behind the wheel.",
