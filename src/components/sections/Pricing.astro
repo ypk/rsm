@@ -79,7 +79,7 @@ const itemClass = `${sectionName}-item`;
             <div class="text-center">
               <button
                 onclick={`openBookingPopup('${pkg.name.toLowerCase().split(' ')[0]}')`}
-                class={`w-full py-3 px-6 font-semibold transition-all duration-200 ${
+                class={`w-full py-3 px-6 font-semibold transition-all duration-200 cursor-pointer ${
                   pkg.popular
                     ? 'bg-amber-700 hover:bg-amber-800 text-white'
                     : 'bg-slate-900 hover:bg-slate-800 text-white'
